@@ -11,9 +11,21 @@ class MovieController extends Controller
         // return response()->json($movie);
         return view('getMovie', ['movies' => $movies]);
     }
+    // 映画一覧表示
     public function movies()
     {
         $movies = Movie::all();
         return view('movies', ['movies' => $movies]);
+    }
+    // 映画新規登録画面
+    public function createMovies()
+    {
+        return view('createMovies');
+    }
+    // 映画新規登録送信先
+    public function storeMovies(Request $request)
+    {
+        $data = $request->all();
+        return view('storeMovies')->with($data);
     }
 }
