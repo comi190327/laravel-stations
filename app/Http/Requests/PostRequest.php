@@ -13,7 +13,7 @@ class PostRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,26 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => 'required|unique:movies,title',
+            'image_url' => 'required|url',
+            'published_year' => 'required|digits:4',
+            'is_showing' => 'boolean',
+            'description' => 'required',
+        ];
+    }
+
+    // エラーメッセージ編集
+    public function messages()
+    {
+        return [
+            'title.required' => 'タイトルは必須入力項目です。',
+            'title.unique' => 'このタイトルは既に登録されています。',
+            'image_url.required' => '画像URLは必須入力項目です。',
+            'image_url.url' => '正しい画像URLを入力してください。',
+            'published_year.required' => '公開年は必須入力項目です。',
+            'published_year.digits' => '公開年は4桁で入力してください。',
+            'is_showing.boolean' => '公開中かどうかチェックしてください。',
+            'description.required' => '概要は必須入力項目です。',
         ];
     }
 }
