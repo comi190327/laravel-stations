@@ -11,24 +11,24 @@
 <table>
     <tr>
         <th><label for='title'>映画タイトル：</label></th>
-        <td><input type='text' name='title' id='title' required></td>
+        <td>{{ $request->title }}</td>
     </tr>
     <tr>
         <th><label for='image_url'>画像URL：</label></th>
-        <td><input type='url' name='image_url' id='image_url' required></td>
+        <td>{{ $request->image_url }}</td>
     </tr>
 
     <tr>
         <th><label for='published_year'>公開年：</label></th>
-        <td><input type='number' max=9999 name='published_year' id='published_year' required></td>
+        <td>{{ $request->published_year }}</td>
     </tr>
     <tr>
         <th><label for='is_showing'>公開中かどうか ：</label></th>
-        <td><input type='checkbox' name='is_showing' id='is_showing' value=1 required></td>
+        <td>{{ $request->is_showing }}</td>
     </tr>
     <tr>
         <th><label for='description'> 概要：</label></th>
-        <td><textarea name='description' id='description' rows='5' cols='35'></textarea></td>
+        <td>{{ $request->description }}</td>
     </tr>
     </table>
 </form>
