@@ -7,6 +7,8 @@
 <title>Movie管理画面</title>
 </head>
 <body>
+<form action='edit' method='post' class='movie_create_form'>
+@csrf
     <table>
         <thead>
             <th>ID</th>
@@ -32,8 +34,10 @@
             <td>{{ $movie->description }}</td>
             <td>{{ $movie->created_at }}</td>
             <td>{{ $movie->updated_at }}</td>
+            <td><button type='button' onclick="location.href='{{ route('movie.edit', ['id' => $movie->id]) }}'">編集</button></td>
         </tbody>
         @endforeach
     </table>
+</form>
 </body>
 </html>

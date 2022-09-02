@@ -40,3 +40,6 @@ Route::get('/getMovie', [MovieController::class, 'getMovie']);
 Route::get('/admin/movies', [MovieController::class, 'movies']); // moviesテーブル一覧を表示
 Route::get('/admin/movies/create', [MovieController::class, 'createMovies']); // moviesテーブル新規登録画面
 Route::post('/admin/movies/store', [MovieController::class, 'storeMovies']); // moviesテーブル新規登録送信先
+Route::get('/admin/movies/{id}/edit', [MovieController::class, 'edit'])->name('movie.edit');
+Route::patch('/admin/movies/{id}/update', [MovieController::class, 'update']);
+Route::put('/admin/movies/{id}/update', [MovieController::class, 'update']);

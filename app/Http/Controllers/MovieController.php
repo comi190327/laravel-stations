@@ -4,6 +4,7 @@ use App\Models\Movie;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Http\Requests\PostRequest;
+use Illuminate\support\Facedes\DB;
 
 class MovieController extends Controller
 {
@@ -44,5 +45,36 @@ class MovieController extends Controller
             }
             
 
+    }
+    // 映画編集画面遷移
+    public function edit($id)
+    {
+        $movie = Movie::find($id);
+        return view('edit', ['movie' => $movie]);
+        // echo ($id);
+        // $param = ['id' => $request->id];
+        // $item = DB::select('select * from movies where id = :id', $id);
+        // echo ($item);
+        // return view('{$id}/edit', ['form => $item[0]']);
+    }
+    // 映画更新画面
+    public function update(PostRequest $request)
+    {
+        try
+        {
+            $movie = Movie::find($request->id);
+            $movie->title = $request->title;
+            $movie->image_url = $request->image_url;
+            $movie->published_year = $request->published_year;
+            $movie->is_showing = $request->is_showing;
+            $movie->description = $request->description;
+            $movie->save();
+            // DB::update('update movies set title = :title, image_url = :image_url, published_year = :published_year, is_showing = :is_showing, description = :description where id = :id, $param');
+            return response()->view('update', ['request' => $request], 302);
+        } catch (QueryException $e) {
+            session()->flash('fhashmessage','エラーが発生しました。');
+            return redirect('edit', ['request' => $request]);
+        }
+        
     }
 }

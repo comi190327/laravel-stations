@@ -24,7 +24,8 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|unique:movies,title',
+            // 'title' => 'required|unique:movies,title'
+            'title' => 'required',
             'image_url' => 'required|url',
             'published_year' => 'required|digits:4',
             'is_showing' => 'boolean',
@@ -37,7 +38,7 @@ class PostRequest extends FormRequest
     {
         return [
             'title.required' => 'タイトルは必須入力項目です。',
-            'title.unique' => 'このタイトルは既に登録されています。',
+            // 'title.unique' => 'このタイトルは既に登録されています。',
             'image_url.required' => '画像URLは必須入力項目です。',
             'image_url.url' => '正しい画像URLを入力してください。',
             'published_year.required' => '公開年は必須入力項目です。',
