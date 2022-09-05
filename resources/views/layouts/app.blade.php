@@ -24,6 +24,8 @@
                 </div>
             @endif
             @yield('content')
+            @yield('btn-dell')
+            @yield('js-validation')
         </div>
     </body>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>

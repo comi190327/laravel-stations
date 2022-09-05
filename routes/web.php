@@ -41,5 +41,7 @@ Route::get('/admin/movies', [MovieController::class, 'movies']); // moviesテー
 Route::get('/admin/movies/create', [MovieController::class, 'createMovies']); // moviesテーブル新規登録画面
 Route::post('/admin/movies/store', [MovieController::class, 'storeMovies']); // moviesテーブル新規登録送信先
 Route::get('/admin/movies/{id}/edit', [MovieController::class, 'edit'])->name('movie.edit');
-Route::patch('/admin/movies/{id}/update', [MovieController::class, 'update']);
-Route::put('/admin/movies/{id}/update', [MovieController::class, 'update']);
+Route::patch('/admin/movies/{id}/update', [MovieController::class, 'update']); // moviesテーブル更新処理
+Route::put('/admin/movies/{id}/update', [MovieController::class, 'update']); // moviesテーブル更新送信先
+Route::get('/admin/movies/{id}/destroy', [MovieController::class, 'destroy']); // movie削除
+Route::post('/admin/movies/{id}/destroy', [MovieController::class, 'destroy']); // movie削除

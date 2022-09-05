@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Http\Requests\PostRequest;
 use Illuminate\support\Facedes\DB;
+use Exception;
 
 class MovieController extends Controller
 {
@@ -76,5 +77,20 @@ class MovieController extends Controller
             return redirect('edit', ['request' => $request]);
         }
         
+    }
+    // 映画削除
+    public function destroy($id)
+    {
+        
+        // 削除
+        // 削除対象レコードを検索
+            $movie = Movie::find($id);
+            if (is_null($movie)) {
+                abort(404);
+            }
+            $movie->delete();
+            // flashメッセージを表示しながらリダイレクト
+            session()->flash('flashmessage', '映画の削除が完了しました。');
+            return redirect('movies');
     }
 }

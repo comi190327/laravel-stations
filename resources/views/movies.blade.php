@@ -5,9 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Movie管理画面</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 </head>
 <body>
-<form action='edit' method='post' class='movie_create_form'>
+<script>
+    function delete_alert(e) {
+    if(!window.confirm('本当に削除しますか？')){
+        window.alert('キャンセルしました。');
+        return false;
+    }
+    document.deleteform.submit();
+};
+</script>
+<script>
+@if (session('flashmessage'))
+    $(function () {
+        toastr.success('{{ session('flashmessage') }}');
+    });
+@endif
+</script>
+<!-- <form action='edit' method='post' class='movie_create_form'> -->
 @csrf
     <table>
         <thead>
@@ -34,10 +53,17 @@
             <td>{{ $movie->description }}</td>
             <td>{{ $movie->created_at }}</td>
             <td>{{ $movie->updated_at }}</td>
-            <td><button type='button' onclick="location.href='{{ route('movie.edit', ['id' => $movie->id]) }}'">編集</button></td>
+            <td><a href="/admin/movies/{{ $movie->id }}/edit"><button type='button' class='btn-edit'>編集</button></a></td>
+            <td>
+                <form action='/admin/movies/{{ $movie->id }}/destroy' method='post'>
+                    {{ csrf_field() }}
+                <input type='submit' class='btn-dell' value='削除' onClick='delete_alert(event);return false;'>
+                </form>
+            </td>
         </tbody>
         @endforeach
     </table>
-</form>
+<!-- </form> -->
 </body>
+
 </html>
