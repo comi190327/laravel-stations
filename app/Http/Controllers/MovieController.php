@@ -9,12 +9,34 @@ use Exception;
 
 class MovieController extends Controller
 {
-    public function getMovie()
+    public function index(Request $request)
     {
-        // $movie->timestamps = false;
+        // 全件取得
         $movies = Movie::all();
-        // return response()->json($movie);
-        return view('getMovie', ['movies' => $movies]);
+        // 検索フォームに入力された値を取得
+        $keyword = $request->input('search_keyword');
+        $status = $request->input('screening_state');
+        // var_dump($keyword);
+        // var_dump($status);
+
+        // クエリビルダ
+        $query = Movie::query();
+        if(!is_null($status)) {
+            if($status == '2' && !empty($keyword)) {
+                $query->where('title','like', '%'.$keyword.'%')->orWhere('description','like', '%'.$keyword.'%');
+            } elseif($status <> '2' && !empty($keyword)) {
+                $query->where('is_showing', $status)
+                ->where(function($query) use($keyword) {
+                    $query->where('title','like', '%'.$keyword.'%')
+                    ->orWhere('description','like', '%'.$keyword.'%');
+                });
+            } elseif ($status <> '2' && empty($keyword)) {
+                $query->where('is_showing', $status);
+            }
+            // var_dump($query->toSql(), $query->getBindings());
+            $movies = $query->get();
+        }
+        return view('index', ['movies' => $movies, 'search_keyword' => $keyword, 'screening_state' => $status]);
     }
     // 映画一覧表示
     public function movies()

@@ -26,8 +26,8 @@
     });
 @endif
 </script>
-<!-- <form action='edit' method='post' class='movie_create_form'> -->
-@csrf
+<div class='movies'>
+<h2>映画一覧</h2>
     <table>
         <thead>
             <th>ID</th>
@@ -63,7 +63,7 @@
         </tbody>
         @endforeach
     </table>
-<!-- </form> -->
+</div>
 </body>
 
 </html>
