@@ -9,19 +9,32 @@
 <body>
     <div class='sheets_all'>
         <table>
+            <!--
             <thead>
                 <th>.</th>
                 <th>.</th>
-                <th>スクリーン</th>
+                <th>ｽｸﾘｰﾝ</th>
                 <th>.</th>
                 <th>.</th>
             </thead>
+            -->
             <tbody>
-                <td>:-:</td>
-                <td>:-:</td>
-                <td>:-:</td>
-                <td>:-:</td>
-                <td>:-:</td>
+                <tr>
+                    <td>:-:</td>
+                    <td>:-:</td>
+                    <td>:-:</td>
+                    <td>:-:</td>
+                    <td>:-:</td>
+                </tr>
+                @foreach($sheets as $sheet)
+                @if($sheet->column == 1)
+                    <tr>
+                @endif
+                <td>{{ $sheet->row }}-{{ $sheet->column }}</td>
+                @if($sheet->column == 5)
+                    </tr>
+                @endif
+                @endforeach
             </tbody>
         </table>
     </div>

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Movie新規登録</title>
+<title>Movie編集画面</title>
 </head>
 <body>
 @if (count($errors) > 0)
@@ -44,7 +44,7 @@
     <div class='movie_create_form'>
         <tr>
         <th><label for='description'> 概要：</label></th>
-        <td><textarea name='description' id='description' rows='5' cols='35' value='{{ $movie->description }}'></textarea></td>
+        <td><textarea name='description' id='description' rows='5' cols='35'>{{ $movie->description }}</textarea></td>
         </tr>
     </div>
     </table>

@@ -39,6 +39,7 @@ Route::get('/practice3', [PracticeController::class, 'sample3']);
 Route::get('/getPractice', [PracticeController::class, 'getPractice']);
 Route::get('/movies', [MovieController::class, 'index']);
 Route::get('/admin/movies', [MovieController::class, 'movies']); // moviesテーブル一覧を表示
+Route::post('/admin/movies', [MovieController::class, 'movies']); // moviesテーブル一覧を表示(削除からリダイレクトしたとき用)
 Route::get('/admin/movies/create', [MovieController::class, 'createMovies']); // moviesテーブル新規登録画面
 Route::post('/admin/movies/store', [MovieController::class, 'storeMovies']); // moviesテーブル新規登録送信先
 Route::get('/admin/movies/{id}/edit', [MovieController::class, 'edit'])->name('movie.edit');

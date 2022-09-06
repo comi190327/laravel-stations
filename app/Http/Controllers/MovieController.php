@@ -14,8 +14,8 @@ class MovieController extends Controller
         // 全件取得
         $movies = Movie::all();
         // 検索フォームに入力された値を取得
-        $keyword = $request->input('search_keyword');
-        $status = $request->input('screening_state');
+        $keyword = $request->input('keyword');
+        $status = $request->input('is_showing');
         // var_dump($keyword);
         // var_dump($status);
 
@@ -36,7 +36,7 @@ class MovieController extends Controller
             // var_dump($query->toSql(), $query->getBindings());
             $movies = $query->get();
         }
-        return view('index', ['movies' => $movies, 'search_keyword' => $keyword, 'screening_state' => $status]);
+        return view('index', ['movies' => $movies, 'keyword' => $keyword, 'is_showing' => $status]);
     }
     // 映画一覧表示
     public function movies()
@@ -113,6 +113,6 @@ class MovieController extends Controller
             $movie->delete();
             // flashメッセージを表示しながらリダイレクト
             session()->flash('flashmessage', '映画の削除が完了しました。');
-            return redirect('movies');
+            return redirect('/admin/movies');
     }
 }
