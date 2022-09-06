@@ -16,7 +16,8 @@ return new class extends Migration
     {
         Schema::table('movies', function (Blueprint $table) {
             //titleにユニーク制約を追加
-            $table->unique('title');
+            $table->string('title', 255)->change();
+            $table->unique(['title']);
         });
     }
 
@@ -28,7 +29,9 @@ return new class extends Migration
     public function down()
     {
         Schema::table('movies', function (Blueprint $table) {
-            Schema::dropUnique('title');
+            $table->dropUnique(['title']);
+            $table->text('title')->change();
+
         });
     }
 };
