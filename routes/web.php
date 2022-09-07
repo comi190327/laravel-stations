@@ -48,3 +48,4 @@ Route::put('/admin/movies/{id}/update', [MovieController::class, 'update']); // 
 Route::get('/admin/movies/{id}/destroy', [MovieController::class, 'destroy']); // movie削除
 Route::post('/admin/movies/{id}/destroy', [MovieController::class, 'destroy']); // movie削除
 Route::get('sheets', [SheetController::class, 'index']); // sheets表示
+Route::get('/movies/{id}', [MovieController::class, 'show']);

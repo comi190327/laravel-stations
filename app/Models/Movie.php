@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Movie extends Model
 {
-    use HasFactory;
+   use HasFactory;
+   public function schedules()
+   {
+    return $this->hasMany(Schedule::class);
+   }
 }
