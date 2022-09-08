@@ -12,15 +12,15 @@ class MovieController extends Controller
     public function index(Request $request)
     {
         // 全件取得
-        $movies = Movie::all();
+        // $movies = Movie::all();
         // 検索フォームに入力された値を取得
         $keyword = $request->input('keyword');
         $status = $request->input('is_showing');
         // var_dump($keyword);
         // var_dump($status);
-
         // クエリビルダ
-        $query = Movie::query();
+        // $query = Movie::query();
+        $query = Movie::titleEqual($request->input);
         if(!is_null($status)) {
             if($status == '2' && !empty($keyword)) {
                 $query->where('title','like', '%'.$keyword.'%')->orWhere('description','like', '%'.$keyword.'%');
@@ -35,6 +35,10 @@ class MovieController extends Controller
             }
             // var_dump($query->toSql(), $query->getBindings());
             $movies = $query->get();
+        } else {
+            $movies = Movie::all();
+            $keyword = '';
+            $status = '2';
         }
         return view('index', ['movies' => $movies, 'keyword' => $keyword, 'is_showing' => $status]);
     }

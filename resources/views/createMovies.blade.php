@@ -35,7 +35,7 @@
     </div>
     <div class='movie_create_form'>
         <tr>
-        <th><label for='is_showing'>公開中かどうか ：</label></th>
+        <th><label for='is_showing'>上映予定 ：</label></th>
         <td><input type='checkbox' name='is_showing' id='is_showing' value=1></td>
         </tr>
     </div>

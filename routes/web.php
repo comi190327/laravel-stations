@@ -47,7 +47,7 @@ Route::get('/admin/movies/{id}/edit', [MovieController::class, 'edit'])->name('m
 Route::patch('/admin/movies/{id}/update', [MovieController::class, 'update']); // moviesテーブル更新処理
 Route::put('/admin/movies/{id}/update', [MovieController::class, 'update']); // moviesテーブル更新送信先
 Route::get('/admin/movies/{id}/destroy', [MovieController::class, 'destroy']); // movie削除
-Route::post('/admin/movies/{id}/destroy', [MovieController::class, 'destroy']); // movie削除
+Route::delete('/admin/movies/{id}/destroy', [MovieController::class, 'destroy']); // movie削除
 Route::get('sheets', [SheetController::class, 'index']); // sheets表示
 Route::get('/movies/{id}', [MovieController::class, 'show']);
 Route::get('/admin/schedules', [ScheduleController::class, 'index']);

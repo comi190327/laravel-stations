@@ -12,6 +12,17 @@
         <li>{{ $error }}</li>
     @endforeach
 @endif
+<script>
+    let checkbox = ducment.getElementById('is_showing');
+    let status = ducment.getElementById('status');
+    function isShowing(){
+        if (checkbox.checked) {
+            status = '1';
+        } else {
+            status = '0';
+        }
+    }
+</script>
 <form action='update' method='post' class='movie_create_form'>
 @method('patch')
 @csrf
@@ -38,7 +49,7 @@
     <div class='movie_create_form'>
         <tr>
         <th><label for='is_showing'>公開中かどうか ：</label></th>
-        <td><input type='checkbox' name='is_showing' id='is_showing' value='{{ $movie->is_showing }}'></td>
+        <td><input type='checkbox' name='is_showing' id='is_showing' value="{{ $movie->is_showing ? '上映中' : '上映予定' }}"></td>
         </tr>
     </div>
     <div class='movie_create_form'>

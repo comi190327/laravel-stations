@@ -11,15 +11,6 @@
 </head>
 <body>
 <script>
-    function delete_alert(e) {
-    if(!window.confirm('本当に削除しますか？')){
-        window.alert('キャンセルしました。');
-        return false;
-    }
-    document.deleteform.submit();
-};
-</script>
-<script>
 @if (session('flashmessage'))
     $(function () {
         toastr.success('{{ session('flashmessage') }}');
@@ -34,7 +25,7 @@
             <th>映画タイトル</th>
             <th>画像URL</th>
             <th>公開年</th>
-            <th>上映中かどうか</th>
+            <th>上映予定</th>
             <th>概要</th>
             <th>登録日時</th>
             <th>更新日時</th>
@@ -57,7 +48,7 @@
             <td>
                 <form action='/admin/movies/{{ $movie->id }}/destroy' method='post'>
                     {{ csrf_field() }}
-                <input type='submit' class='btn-dell' value='削除' onClick='delete_alert(event);return false;'>
+                <input type='submit' class='btn-dell' value='削除' onClick='return confirm("本当に削除しますか？");'>
                 </form>
             </td>
         </tbody>

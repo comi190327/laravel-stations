@@ -12,13 +12,13 @@
     <form action='movies' method='get'>
     @csrf
     <table>
-        <tr><th>検索キーワード</th><td><input type='text' id='keyword' name='keyword'></td></tr>
+        <tr><th>検索キーワード</th><td><input type='text' id='keyword' name='keyword' value="{{ old('keyword', $keyword) }}"></td></tr>
         <tr>
             <th>上映状態</th>
             <td>
-                <label><input type='radio' name='is_showing' value='2' checked='checked'>すべて</label>
-                <label><input type='radio' name='is_showing' value='0'>公開予定</label>
-                <label><input type='radio' name='is_showing' value='1'>公開中</label>
+                <label><input type='radio' name='is_showing' value='2' {{ old('is_showing', $is_showing) == '2' ? 'checked' : '' }} />すべて</label>
+                <label><input type='radio' name='is_showing' value='0' {{ old('is_showing', $is_showing) == '0' ? 'checked' : '' }}/>公開予定</label>
+                <label><input type='radio' name='is_showing' value='1' {{ old('is_showing', $is_showing) == '1' ? 'checked' : '' }}/>公開中</label>
             </td>
         </tr>   
     </table>
