@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PracticeController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\SheetController;
+use App\Http\Controllers\ScheduleController;
 /*
 |-------------------------------------------------------------------------
 | Web Routes
@@ -49,3 +50,9 @@ Route::get('/admin/movies/{id}/destroy', [MovieController::class, 'destroy']); /
 Route::post('/admin/movies/{id}/destroy', [MovieController::class, 'destroy']); // movie削除
 Route::get('sheets', [SheetController::class, 'index']); // sheets表示
 Route::get('/movies/{id}', [MovieController::class, 'show']);
+Route::get('/admin/schedules', [ScheduleController::class, 'index']);
+Route::get('/admin/schedules/{id}');
+Route::get('/admin/movies/{id}/schedules/create', [ScheduleController::class, 'create']);
+Route::get('/admin/schedules/{scheduleId}/edit', [ScheduleController::class, 'edit']);
+Route::patch('/admin/schedules/{scheduleId}/update', [ScheduleController::class, 'update']);
+Route::delete('/admin/schedules/{scheduleId}/destroy', [ScheduleController::class, 'destroy']);
