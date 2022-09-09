@@ -31,6 +31,5 @@
         <td>{{ $request->description }}</td>
     </tr>
     </table>
-</form>
 </body>
 </html>

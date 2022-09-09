@@ -7,15 +7,16 @@
 <title>スケジュール登録画面</title>
 </head>
 <body>
-@if (count($errors) > 0)
-    @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-    @endforeach
+@if (session('fhashmessage'))
+    <div class="fhashmessage">
+        {{ session('fhashmessage') }}
+    </div>
 @endif
 <div class='schedule_create_title'>
     <h1>スケジュール登録フォーム</h1>
 </div>
 <form action='store' method='post' class='schedule_create'>
+@csrf
 <div class='movie_title'>
     <h2>作品ID：{{ $movie->id }}　作品タイトル{{ $movie->title }}</h2>
 </div>
