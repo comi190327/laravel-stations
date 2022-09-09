@@ -18,8 +18,10 @@ class ScheduleController extends Controller
         $movies = Movie::all();
         return view('schedule', ['movies' => $movies]);
     }
-    public function create()
+    public function create($id)
     {
+        $movie = Movie::find($id);
+        return view('createSchedule', ['movie' => $movie]);
         
     }
     public function edit()

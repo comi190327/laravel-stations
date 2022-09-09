@@ -19,8 +19,8 @@ class MovieController extends Controller
         // var_dump($keyword);
         // var_dump($status);
         // クエリビルダ
-        // $query = Movie::query();
-        $query = Movie::titleEqual($request->input);
+        $query = Movie::query();
+        // $query = Movie::titleEqual($request->input);
         if(!is_null($status)) {
             if($status == '2' && !empty($keyword)) {
                 $query->where('title','like', '%'.$keyword.'%')->orWhere('description','like', '%'.$keyword.'%');
@@ -46,6 +46,7 @@ class MovieController extends Controller
     public function movies()
     {
         $movies = Movie::all();
+        
         return view('movies', ['movies' => $movies]);
     }
     // 映画新規登録画面
