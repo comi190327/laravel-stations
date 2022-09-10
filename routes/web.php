@@ -51,10 +51,13 @@ Route::delete('/admin/movies/{id}/destroy', [MovieController::class, 'destroy'])
 Route::get('sheets', [SheetController::class, 'index']); // sheets表示
 Route::get('/movies/{id}', [MovieController::class, 'show']);
 Route::get('/admin/schedules', [ScheduleController::class, 'index']);
-Route::get('/admin/schedules/{id}');
-Route::get('/admin/movies/{id}', [ScheduleController::class, 'show']);
+Route::get('/admin/schedules/{id}', [ScheduleController::class, 'showSchedule']);
+Route::post('/admin/schedules/{id}', [ScheduleController::class, 'showSchedule']);
+Route::get('/admin/movies/{id}', [ScheduleController::class, 'showMovie']);
 Route::get('/admin/movies/{id}/schedules/create', [ScheduleController::class, 'create']);
-Route::post('/admin/movies/{id}/schedules/store', [ScheduleController::class, 'store']);
+Route::get('/admin/movies/{id}/schedules/store', [ScheduleController::class, 'store'])->name('schedule.store');
+Route::post('/admin/movies/{id}/schedules/store', [ScheduleController::class, 'store'])->name('schedule.store');
 Route::get('/admin/schedules/{scheduleId}/edit', [ScheduleController::class, 'edit']);
 Route::patch('/admin/schedules/{scheduleId}/update', [ScheduleController::class, 'update']);
+Route::put('/admin/schedules/{scheduleId}/update', [ScheduleController::class, 'update']);
 Route::delete('/admin/schedules/{scheduleId}/destroy', [ScheduleController::class, 'destroy']);

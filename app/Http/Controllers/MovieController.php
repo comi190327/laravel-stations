@@ -79,11 +79,6 @@ class MovieController extends Controller
     {
         $movie = Movie::find($id);
         return view('edit', ['movie' => $movie]);
-        // echo ($id);
-        // $param = ['id' => $request->id];
-        // $item = DB::select('select * from movies where id = :id', $id);
-        // echo ($item);
-        // return view('{$id}/edit', ['form => $item[0]']);
     }
     // 映画更新画面
     public function update(PostRequest $request)

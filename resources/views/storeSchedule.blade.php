@@ -9,7 +9,7 @@
 <body>
 以下のデータを正常に登録しました。
 <div class='movie_title'>
-    <h2>作品ID：{{ $request->id }}　作品タイトル{{ $request->title }}</h2>
+    <h2>作品ID：{{ $request->movie_id }}　作品タイトル{{ $request->movie_title }}</h2>
 </div>
 <div class='movie_schedule'>
     <table>

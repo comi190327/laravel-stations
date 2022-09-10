@@ -5,7 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>スケジュール管理画面</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 </head>
+<script>
+@if (session('flashmessage'))
+    $(function () {
+        toastr.success('{{ session('flashmessage') }}');
+    });
+@endif
+</script>
 <body>
     <div class='schedule_list'>
     @foreach($movies as $movie)

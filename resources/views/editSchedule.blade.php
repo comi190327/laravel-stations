@@ -15,20 +15,22 @@
 <div class='schedule_edit_title'>
     <h1>スケジュール編集フォーム</h1>
 </div>
-<form action='store' method='post' class='schedule_edit'>
+<form action='update' method='post' class='schedule_edit'>
+@method('patch')
+@csrf
 <div class='movie_title'>
-    <h2>作品ID：{{ $movie->id }}　作品タイトル{{ $movie->title }}</h2>
+    <h2>スケジュールID：{{ $schedule->id }}</h2>
+    <input type='hidden' name='id' id='id' value='{{ $schedule->id }}'>
 </div>
-@foreach($movies->schedules as $schedules)
 <div class='movie_schedule'>
     <table>
         <tr>
-            <td>開始日付：<input type='date' name='start_time_date' id='start_time_date' value='{{ $schedule->start_time_date }}'></td>
-            <td>開始時間：<input type='time' name='start_time_time' id='start_time_time' value='{{ $schedule->start_time_time }}'></td>
+            <td>開始日付：<input type='date' name='start_time_date' id='start_time_date' value="{{ $schedule->start_time->format('Y/m/d') }}"></td>
+            <td>開始時間：<input type='time' name='start_time_time' id='start_time_time' value='{{ $schedule->start_time->format("H:i") }}'></td>
         </tr>
         <tr>
-            <td>終了日付：<input type='date' name='end_time_date' id='end_time_date' value='{{ $schedule->end_time_date }}'></td>
-            <td>終了時間：<input type='time' name='end_time_time' id='end_time_time' value='{{ $schedule->end_time_time }}'></td>
+            <td>終了日付：<input type='date' name='end_time_date' id='end_time_date' value="{{ $schedule->end_time->format('Y/m/d') }}"></td>
+            <td>終了時間：<input type='time' name='end_time_time' id='end_time_time' value='{{ $schedule->end_time->format("H:i") }}'></td>
         </tr>
     </table>
     <input type='submit' value='更新'>
