@@ -14,12 +14,12 @@
 <div class='movie_schedule'>
     <table>
         <tr>
-            <td>開始日付：{{ $request->start_time_date }}</td>
-            <td>開始時間：{{ $request->start_time_time }}</td>
+            <td>開始日付：{{ DateTime::createFromFormat('Y-m-d', $request->start_time_date)->format('Y/m/d') }}</td>
+            <td>開始時間：{{ DateTime::createFromFormat('H:i', $request->start_time_time)->format('H時i分') }}</td>
         </tr>
         <tr>
-            <td>終了日付：{{ $request->end_time_date }}</td>
-            <td>終了時間：{{ $request->end_time_time }}</td>
+            <td>終了日付：{{ DateTime::createFromFormat('Y-m-d', $request->end_time_date)->format('Y/m/d') }}</td>
+            <td>終了時間：{{ DateTime::createFromFormat('H:i',$request->end_time_time)->format('H時i分') }}</td>
         </tr>
     </table>
 </div>

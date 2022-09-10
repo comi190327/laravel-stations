@@ -5,6 +5,7 @@ use App\Models\Movie;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Http\Requests\PostRequest;
+use App\Http\Requests\SchedulePostRequest;
 use Illuminate\support\Facedes\DB;
 use Exception;
 
@@ -33,7 +34,7 @@ class ScheduleController extends Controller
         $movie = Movie::find($id);
         return view('createSchedule', ['movie' => $movie]);
     }
-    public function store(Request $request)
+    public function store(SchedulePostRequest $request)
     {
         try
         {
@@ -52,11 +53,9 @@ class ScheduleController extends Controller
     public function edit($id)
     {
         $schedule = Schedule::find($id);
-        dump($schedule->start_time);
-        dump($schedule->end_time);
         return view('editSchedule', ['schedule' => $schedule]);
     }
-    public function update(Request $request)
+    public function update(SchedulePostRequest $request)
     {
         try
         {
